@@ -7,10 +7,12 @@ import TopMenu from './components/TopMenu'
 import { Alert } from 'vtex.styleguide'
 import { ExtensionPoint, withRuntimeContext } from 'render'
 
+/*
 import {
   orderFormConsumer,
   contextPropTypes,
 } from 'vtex.store/OrderFormContext'
+*/
 
 import './global.css'
 
@@ -26,7 +28,7 @@ class Header extends Component {
     logoTitle: PropTypes.string,
     leanWhen: PropTypes.string,
     intl: intlShape.isRequired,
-    orderFormContext: contextPropTypes,
+    // orderFormContext: contextPropTypes,
     showSearchBar: PropTypes.bool,
     showLogin: PropTypes.bool,
     runtime: PropTypes.shape({
@@ -78,14 +80,14 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
+    const { logoUrl, logoTitle, /*orderFormContext, */showSearchBar, showLogin } = this.props
     const { showMenuPopup } = this.state
 
     const leanMode = this.isLeanMode()
     const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
 
-    const hasMessage =
-      orderFormContext.message.text && orderFormContext.message.text !== ''
+    // const hasMessage =
+    //   orderFormContext.message.text && orderFormContext.message.text !== ''
 
     const topMenuOptions = {
       logoUrl,
@@ -114,7 +116,8 @@ class Header extends Component {
             className="flex flex-column items-center fixed w-100"
             style={{ top: offsetTop + 120 }}
           >
-            {hasMessage && (
+            {/*
+              hasMessage && (
               <div className="pa2 mw9">
                 <Alert
                   type={
@@ -124,7 +127,7 @@ class Header extends Component {
                   {orderFormContext.message.text}
                 </Alert>
               </div>
-            )}
+                )*/}
           </div>
         </div>
       </Fragment>
@@ -159,6 +162,11 @@ Header.schema = {
   }
 }
 
+// export default withRuntimeContext(
+//   hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header)
+// )
+
+
 export default withRuntimeContext(
-  hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header)
+  hoistNonReactStatics(injectIntl(Header), Header)
 )
