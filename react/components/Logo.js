@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint, Link } from 'render'
 import ReactResizeDetector from 'react-resize-detector'
 
+import header from '../header.css'
+
 const Logo = ({link, src, title, sizeMobile, sizeDesktop, onResize}) => (
-  <div className="vtex-top-menu__logo pv2">
+  <div className={`${header.topMenuLogo} pv2`}>
     <ReactResizeDetector handleHeight onResize={onResize}>
       <Link
         to={link}

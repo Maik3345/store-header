@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import TopMenu from './components/TopMenu'
 import { ExtensionPoint, withRuntimeContext } from 'render'
 
+import header from './header.css'
 import './global.css'
 
 class Header extends Component {
@@ -54,7 +55,7 @@ class Header extends Component {
 
     return (
       <div
-        className={`vtex-header force-full-width relative z-2 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
+        className={`${header.container} force-full-width relative z-2 ${leanMode ? header.leanMode : ''}`}
       >
         <TopMenu
           {...topMenuOptions}

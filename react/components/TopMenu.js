@@ -6,6 +6,7 @@ import { Button, IconSearch } from 'vtex.styleguide'
 import ResizeDetector from 'react-resize-detector'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
+import header from '../header.css'
 
 const LOGO_MAX_WIDTH_DESKTOP = 150
 const LOGO_MAX_WIDTH_MOBILE = 90
@@ -182,7 +183,7 @@ class TopMenu extends Component {
     const { leanMode, showLogin, showSearchBar } = this.props
 
     return (
-      <div className="vtex-top-menu__icons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns">
+      <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
         {/** Both desktop and mobile icons are rendered, and hidden through CSS,
           for better server side rendering support */}
 
@@ -292,7 +293,7 @@ class TopMenu extends Component {
           </ResizeDetector>
         </div>
         <div
-          className={`vtex-top-menu flex justify-center w-100 bg-base left-0 z-3 ph3-s ph7-m ph8-l ph9-xl ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
+          className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ph3-s ph7-m ph8-l ph9-xl ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
           ref={this.container}
           style={{
             top: extraHeadersHeight,
